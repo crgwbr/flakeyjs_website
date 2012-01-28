@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd deploy/
+python -m SimpleHTTPServer

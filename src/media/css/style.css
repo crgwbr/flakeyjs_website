@@ -288,10 +288,21 @@ body {
   max-width: 640px;
   margin: 0 auto 0 auto; }
 
+pre {
+  overflow: auto;
+  background: #DDD;
+  border-radius: 5px;
+  padding: 10px; }
+
+code {
+  font-family: Menlo, Consolas; }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "futura-pt-1", "futura-pt-2", sans-serif;
   font-weight: 300;
   margin: 0; }
+  #content h1:not(.light), #content h2:not(.light), #content h3:not(.light), #content h4:not(.light), #content h5:not(.light), #content h6:not(.light) {
+    font-weight: 700; }
 
 h1 {
   font-size: 47px;
@@ -323,9 +334,11 @@ h6 {
 a {
   color: #333333;
   text-decoration: none; }
-  a:hover {
+  a:hover, a:visited:hover {
     color: #EEE;
     background-color: #333333; }
+  a:visited {
+    color: #333333; }
 
 a.button {
   font-size: 18px;
@@ -378,9 +391,27 @@ div.button {
 .center, #footer {
   text-align: center; }
 
+.clear {
+  clear: both; }
+
 #header {
   padding: 10px 0;
   margin: 0 auto 0 auto; }
+  #header h1 {
+    width: 40%;
+    float: left; }
+  #header ul {
+    width: 50%;
+    padding: 0;
+    margin: 24px 0 0 0;
+    float: right; }
+    #header ul li {
+      margin: 0 3%;
+      list-style: none;
+      display: inline; }
+      #header ul li a {
+        display: inline-block;
+        padding: 2px 5px; }
 
 #content {
   padding: 30px;
@@ -390,9 +421,12 @@ div.button {
   box-shadow: 0 0 15px #AAA; }
 
 #footer ul {
-  padding: 0;
+  padding: 0 0 50px 0;
   margin: 10px 0; }
   #footer ul li {
-    margin: 0 5% 0 5%;
+    margin: 0 3%;
     list-style: none;
     display: inline; }
+    #footer ul li a {
+      display: inline-block;
+      padding: 2px 5px; }

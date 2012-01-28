@@ -6,7 +6,7 @@ $line-height: 19.8px;
 
 $text-color: #333;
 
-$body-font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;;
+$body-font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 $heading-font-family: "futura-pt-1", "futura-pt-2", sans-serif;
 
 html, body {
@@ -28,10 +28,24 @@ body {
 	margin: 0 auto 0 auto;
 }
 
+pre {
+	overflow: auto;
+	background: #DDD;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+code {
+	font-family: Menlo, Consolas;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family:  $heading-font-family;
   font-weight:  300;
   margin:  0;
+  #content &:not(.light) {
+  	font-weight:  700;
+  }
 }
 
 h1 {
@@ -66,9 +80,12 @@ h6 {
 a {
 	color: $text-color;
 	text-decoration: none;
-	&:hover {
+	&:hover, &:visited:hover {
 	  color: #EEE;
 	  background-color: $text-color;
+	}
+	&:visited {
+	  color: $text-color;
 	}
 }
 
@@ -127,9 +144,32 @@ div.button {
 	text-align: center;
 }
 
+.clear {
+	clear:  both;
+}
+
 #header {
+  h1 {
+    width:  40%;
+    float:  left;
+  }
 	padding: 10px 0;
 	margin: 0 auto 0 auto;
+	ul {
+	  width: 50%;
+	  padding: 0;
+	  margin: 24px 0 0 0;
+	  float:  right;
+	  li {
+	    margin: 0 3%;
+	    list-style: none;
+	    display: inline;
+	    a {
+	      display:  inline-block;
+	      padding: 2px 5px;
+	    }
+	  }
+	}
 }
 
 #content {
@@ -143,12 +183,16 @@ div.button {
 #footer {
   @extend .center;
 	ul {
-	  padding: 0;
+	  padding: 0 0 50px 0;
 	  margin: 10px 0;
 	  li {
-	    margin: 0 5% 0 5%;
+	    margin: 0 3%;
 	    list-style: none;
-	    display:  inline;
+	    display: inline;
+	    a {
+	      display:  inline-block;
+	      padding: 2px 5px;
+	    }
 	  }
 	}
 }
