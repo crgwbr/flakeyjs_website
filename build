@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python ../hyde/hyde.py -g -s src/ -d deploy/
