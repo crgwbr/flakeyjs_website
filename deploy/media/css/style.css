@@ -288,6 +288,9 @@ body {
   max-width: 640px;
   margin: 0 auto 0 auto; }
 
+hr {
+  margin: 20px 0; }
+
 pre {
   overflow: auto;
   background: #DDD;
@@ -297,24 +300,31 @@ pre {
 code {
   font-family: Menlo, Consolas; }
 
+ul {
+  padding-left: 10px; }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "futura-pt-1", "futura-pt-2", sans-serif;
-  font-weight: 300;
-  margin: 0; }
-  #content h1:not(.light), #content h2:not(.light), #content h3:not(.light), #content h4:not(.light), #content h5:not(.light), #content h6:not(.light) {
-    font-weight: 700; }
+  margin: 30px 0 0 0; }
+  h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+    margin-top: 0; }
+  h1 .light, h2 .light, h3 .light, h4 .light, h5 .light, h6 .light {
+    font-weight: 300; }
 
 h1 {
   font-size: 47px;
-  line-height: 47px; }
+  line-height: 47px;
+  font-weight: 400; }
 
 h2 {
   font-size: 29px;
-  line-height: 29px; }
+  line-height: 29px;
+  font-weight: 400; }
 
 h3 {
   font-size: 29px;
-  line-height: 29px; }
+  line-height: 29px;
+  font-weight: 400; }
 
 h4 {
   font-size: 18px;
@@ -332,8 +342,7 @@ h6 {
   font-weight: 700; }
 
 a {
-  color: #333333;
-  text-decoration: none; }
+  color: #333333; }
   a:hover, a:visited:hover {
     color: #EEE;
     background-color: #333333; }
@@ -400,6 +409,8 @@ div.button {
   #header h1 {
     width: 40%;
     float: left; }
+    #header h1 a {
+      text-decoration: none; }
   #header ul {
     width: 50%;
     padding: 0;
@@ -410,6 +421,7 @@ div.button {
       list-style: none;
       display: inline; }
       #header ul li a {
+        text-decoration: none;
         display: inline-block;
         padding: 2px 5px; }
 
@@ -428,5 +440,6 @@ div.button {
     list-style: none;
     display: inline; }
     #footer ul li a {
+      text-decoration: none;
       display: inline-block;
       padding: 2px 5px; }

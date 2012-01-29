@@ -9,7 +9,7 @@
     <title>Documentation - Flakey.js - Javascript MVC with Models that Just Work.</title>
   </head>
   <body>
-    <a href="https://github.com/crgwbr/flakeyjs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
+    <a href="https://github.com/crgwbr/flakeyjs"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
     <div id="header">
       <h1><a href="/">Flakey.js</a></h1>
       <ul>
@@ -23,15 +23,23 @@
     
     <div id="content">
       
-<h2>Working Examples of&nbsp;Flakey.js</h2>
-<h4>Notes</h4>
-<p>A simple note taking app that stores notes in browser&nbsp;localStorage.</p>
+<h3>Navigation</h3>
 <ul>
-<li><a href="http://flakeyjs.crgwbr.com/notes/">Hosted</a></li>
-<li><a href="https://github.com/crgwbr/flakeyjs/tree/master/example">Source</a></li>
+  <li><a href="#examples">Example&nbsp;Apps</a></li>
+  <li><a href="#events">Event&nbsp;System</a></li>
 </ul>
-<hr />
-<h2>Flakey.events</h2>
+<hr/>
+
+<div id="examples">
+  <h2>Working Examples of&nbsp;Flakey.js</h2>
+<h4>Notes</h4>
+<p>A simple responsive note taking app that stores notes in browser localStorage. <a href="http://flakeyjs.crgwbr.com/notes/">Try it</a> or examine the <a href="https://github.com/crgwbr/flakeyjs/tree/master/example">source</a>.</p>
+</div>
+
+<hr/>
+
+<div id="events">
+  <h2>Flakey.events</h2>
 <p>Flakey.js includes a basic event signaling system to allow subscribing to and generating events by means of an Observer-pattern singleton located at Flakey.events. Flakey.js triggers built-in signals for several common events (model updating, etc), but you can also create and trigger your own&nbsp;signals.</p>
 <h4>Creating a new&nbsp;event</h4>
 <p>In&nbsp;CoffeeScript:</p>
@@ -80,6 +88,7 @@ Flakey.events.register('map_view_updated', our_fn, 'my_app')
 <ul>
 <li><code>model_foo_updated</code> - foo is replaced by the model's name in lowercase (e.g. <code>model_note_updated</code>). Called when an instance of the model is saved, passes the instance through in&nbsp;data.</li>
 </ul>
+</div>
 
     </div>
     

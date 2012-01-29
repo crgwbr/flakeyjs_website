@@ -5,11 +5,20 @@
 %}
 
 {% block content_body %}
-{% markdown %}
+<h3>Navigation</h3>
+<ul>
+  <li><a href="#examples">Example Apps</a></li>
+  <li><a href="#events">Event System</a></li>
+</ul>
+<hr/>
 
-{% include "doc-src/examples.md" %}
-* * * * *
-{% include "doc-src/events.md" %}
+<div id="examples">
+  {% markdown %}{% include "doc-src/examples.md" %}{% endmarkdown %}
+</div>
 
-{% endmarkdown %}
+<hr/>
+
+<div id="events">
+  {% markdown %}{% include "doc-src/events.md" %}{% endmarkdown %}
+</div>
 {% endblock %}

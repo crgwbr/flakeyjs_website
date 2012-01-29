@@ -28,6 +28,10 @@ body {
 	margin: 0 auto 0 auto;
 }
 
+hr {
+  margin: 20px 0;
+}
+
 pre {
 	overflow: auto;
 	background: #DDD;
@@ -39,26 +43,35 @@ code {
 	font-family: Menlo, Consolas;
 }
 
+ul {
+  padding-left: 10px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family:  $heading-font-family;
-  font-weight:  300;
-  margin:  0;
-  #content &:not(.light) {
-  	font-weight:  700;
+  margin: 30px 0 0 0;
+  &:first-child {
+    margin-top: 0;
+  }
+  .light {
+  	font-weight:  300;
   }
 }
 
 h1 {
   font-size:  ms(3, $font-size);
   line-height:  ms(3, $font-size);
+  font-weight: 400;
 }
 h2 {
   font-size:  ms(2, $font-size);
   line-height:  ms(2, $font-size);
+  font-weight: 400;
 }
 h3 {
   font-size:  ms(2, $font-size);
   line-height:  ms(2, $font-size);
+  font-weight: 400;
 }
 h4 {
   
@@ -79,7 +92,6 @@ h6 {
 
 a {
 	color: $text-color;
-	text-decoration: none;
 	&:hover, &:visited:hover {
 	  color: #EEE;
 	  background-color: $text-color;
@@ -152,6 +164,9 @@ div.button {
   h1 {
     width:  40%;
     float:  left;
+    a {
+      text-decoration: none;
+    }
   }
 	padding: 10px 0;
 	margin: 0 auto 0 auto;
@@ -165,6 +180,7 @@ div.button {
 	    list-style: none;
 	    display: inline;
 	    a {
+	      text-decoration: none;
 	      display:  inline-block;
 	      padding: 2px 5px;
 	    }
@@ -190,6 +206,7 @@ div.button {
 	    list-style: none;
 	    display: inline;
 	    a {
+	      text-decoration: none;
 	      display:  inline-block;
 	      padding: 2px 5px;
 	    }
