@@ -58,6 +58,8 @@ AddType application/x-chrome-extension crx
 AddType application/x-xpinstall        xpi
 AddType application/octet-stream       safariextz
 
+AddType text/plain       md markdown
+
 # gzip compression
 <IfModule mod_deflate.c>
     # force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
