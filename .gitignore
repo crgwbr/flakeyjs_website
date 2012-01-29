@@ -1,0 +1,6 @@
+.DS_Store
+*.pyc
+*.scssc
+*.sassc
+*.esproj
+*.esspressostorage

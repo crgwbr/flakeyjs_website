@@ -6,7 +6,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     
     <link rel="stylesheet" href="/media/css/style.css" type="text/css" />
-    <title>Documentation - Flakey.js - Javascript <span class="caps">MVC</span> with Models that Just Work.</title>
+    <title>Documentation - Flakey.js - Javascript MVC with Models that Just Work.</title>
   </head>
   <body>
     <div id="header">
@@ -43,7 +43,7 @@ can also create and trigger your own&nbsp;signals.</p>
 Whenever that signal is triggered, our function will be called along with any other functions 
 registered to this event. In addition to the signal name, you can optionally supply a namespace 
 for your signal. For example, you may want to namespace all signals specific to your app under 
-the name &#8220;my_app&#8221;. You can do that&nbsp;with:</p>
+the name "my_app". You can do that&nbsp;with:</p>
 <p>In&nbsp;CoffeeScript:</p>
 <pre><code>our_fn = (event, namespace, data) -&gt;
   console.log 'The Map View has been updated!'
@@ -73,11 +73,11 @@ Flakey.events.register('map_view_updated', our_fn, 'my_app')
 functions.  You can do that by&nbsp;calling:</p>
 <pre><code>Flakey.events.clear('my_app')
 </code></pre>
-<p>It&#8217;s doubtful you&#8217;l ever need to do this, but the ability exists if you ever&nbsp;do.</p>
+<p>It's doubtful you'l ever need to do this, but the ability exists if you ever&nbsp;do.</p>
 <h4>Flakey built in&nbsp;events</h4>
-<p>These common events are built into the default (&#8220;flakey&#8221;)&nbsp;namespace.</p>
+<p>These common events are built into the default ("flakey")&nbsp;namespace.</p>
 <ul>
-<li><code>model_foo_updated</code> - foo is replaced by the model&#8217;s name in lowercase (e.g. <code>model_note_updated</code>). 
+<li><code>model_foo_updated</code> - foo is replaced by the model's name in lowercase (e.g. <code>model_note_updated</code>). 
 Called when an instance of the model is saved, passes the instance through in&nbsp;data.</li>
 </ul>
 
