@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
+  
   <head>
     <script type="text/javascript" src="http://use.typekit.com/dfp5tbm.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     
     <link rel="stylesheet" href="/media/css/style.css" type="text/css" />
-    <title>Documentation - Flakey.js - Javascript MVC with Models that Just Work.</title>
+    <title>Documentation - Flakey.js - Javascript <span class="caps">MVC</span> with Models that Just Work.</title>
   </head>
   <body>
     <div id="header">
-      <h1>Flakey.js</h1>
+      <h1><a href="/">Flakey.js</a></h1>
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="https://github.com/crgwbr/flakeyjs" target="_blank">GitHub</a></li>
-        <li><a href="/docs.html">Documentation</a></li>
-        <li><a href="/about.html">About</a></li>
+        <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/about/">About</a></li>
       </ul>
       <div class="clear"></div>
     </div>
@@ -25,14 +26,14 @@
 <p>Flakey.js includes a basic event signaling system to allow subscribing to and 
 generating events by means of an Observer-pattern singleton located at Flakey.events. 
 Flakey.js triggers built-in signals for several common events (model updating, etc), but you 
-can also create and trigger your own signals.</p>
-<h4>Creating a new event</h4>
-<p>In CoffeeScript:</p>
+can also create and trigger your own&nbsp;signals.</p>
+<h4>Creating a new&nbsp;event</h4>
+<p>In&nbsp;CoffeeScript:</p>
 <pre><code>Flakey.events.register 'map_view_updated', (event, namespace, data) -&gt;
   console.log 'The Map View has been updated!'
   console.log data  # Optional arbitrary data passed in by the trigger
 </code></pre>
-<p>In JavaScript:</p>
+<p>In&nbsp;JavaScript:</p>
 <pre><code>Flakey.events.register('map_view_updated', function() {
   console.log('The Map View has been updated!');
   console.log(data); // Optional arbitrary data passed in by the trigger
@@ -42,42 +43,42 @@ can also create and trigger your own signals.</p>
 Whenever that signal is triggered, our function will be called along with any other functions 
 registered to this event. In addition to the signal name, you can optionally supply a namespace 
 for your signal. For example, you may want to namespace all signals specific to your app under 
-the name "my_app". You can do that with:</p>
-<p>In CoffeeScript:</p>
+the name &#8220;my_app&#8221;. You can do that&nbsp;with:</p>
+<p>In&nbsp;CoffeeScript:</p>
 <pre><code>our_fn = (event, namespace, data) -&gt;
   console.log 'The Map View has been updated!'
   console.log data  # Optional arbitrary data passed in by the trigger
 
 Flakey.events.register 'map_view_updated', our_fn, 'my_app'
 </code></pre>
-<p>In JavaScript:</p>
+<p>In&nbsp;JavaScript:</p>
 <pre><code>our_fn = function() {
   console.log('The Map View has been updated!');
   console.log(data); // Optional arbitrary data passed in by the trigger
 }
 Flakey.events.register('map_view_updated', our_fn, 'my_app')
 </code></pre>
-<h4>Triggering an event</h4>
-<p>Triggering an event is even simpler than registering an action.</p>
+<h4>Triggering an&nbsp;event</h4>
+<p>Triggering an event is even simpler than registering an&nbsp;action.</p>
 <pre><code>Flakey.events.trigger('map_view_updated')
 </code></pre>
-<p>To trigger an event within a namespace:</p>
+<p>To trigger an event within a&nbsp;namespace:</p>
 <pre><code>Flakey.events.trigger('map_view_updated', 'my_app')
 </code></pre>
-<p>Additionally, you may optionally pass in data to be passed to the listening functions like so:</p>
+<p>Additionally, you may optionally pass in data to be passed to the listening functions like&nbsp;so:</p>
 <pre><code>Flakey.events.trigger('map_view_updated', 'my_app', {id: 42})
 </code></pre>
-<h4>Destroying a namespace</h4>
+<h4>Destroying a&nbsp;namespace</h4>
 <p>If you wish, its possible to completely wipe the slate clean for a namespace, removing all listening 
-functions.  You can do that by calling:</p>
+functions.  You can do that by&nbsp;calling:</p>
 <pre><code>Flakey.events.clear('my_app')
 </code></pre>
-<p>It's doubtful you'l ever need to do this, but the ability exists if you ever do.</p>
-<h4>Flakey built in events</h4>
-<p>These common events are built into the default ("flakey") namespace.</p>
+<p>It&#8217;s doubtful you&#8217;l ever need to do this, but the ability exists if you ever&nbsp;do.</p>
+<h4>Flakey built in&nbsp;events</h4>
+<p>These common events are built into the default (&#8220;flakey&#8221;)&nbsp;namespace.</p>
 <ul>
-<li><code>model_foo_updated</code> - foo is replaced by the model's name in lowercase (e.g. <code>model_note_updated</code>). 
-Called when an instance of the model is saved, passes the instance through in data.</li>
+<li><code>model_foo_updated</code> - foo is replaced by the model&#8217;s name in lowercase (e.g. <code>model_note_updated</code>). 
+Called when an instance of the model is saved, passes the instance through in&nbsp;data.</li>
 </ul>
 
     </div>
@@ -86,9 +87,10 @@ Called when an instance of the model is saved, passes the instance through in da
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="https://github.com/crgwbr/flakeyjs" target="_blank">GitHub</a></li>
-        <li><a href="/docs.html">Documentation</a></li>
-        <li><a href="/about.html">About</a></li>
+        <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/about/">About</a></li>
       </ul>
     </div>
   </body>
+  
 </html>
