@@ -9,6 +9,7 @@
     <title>Documentation - Flakey.js - Javascript MVC with Models that Just Work.</title>
   </head>
   <body>
+    <a href="https://github.com/crgwbr/flakeyjs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
     <div id="header">
       <h1><a href="/">Flakey.js</a></h1>
       <ul>
@@ -22,16 +23,17 @@
     
     <div id="content">
       
-<h1>Working Examples of&nbsp;Flakey.js</h1>
-<h3>Notes</h3>
+<h2>Working Examples of&nbsp;Flakey.js</h2>
+<h4>Notes</h4>
 <p>A simple note taking app that stores notes in browser&nbsp;localStorage.</p>
 <ul>
 <li><a href="http://flakeyjs.crgwbr.com/notes/">Hosted</a></li>
 <li><a href="https://github.com/crgwbr/flakeyjs/tree/master/example">Source</a></li>
 </ul>
-<h1>Flakey.events</h1>
+<hr />
+<h2>Flakey.events</h2>
 <p>Flakey.js includes a basic event signaling system to allow subscribing to and generating events by means of an Observer-pattern singleton located at Flakey.events. Flakey.js triggers built-in signals for several common events (model updating, etc), but you can also create and trigger your own&nbsp;signals.</p>
-<h3>Creating a new&nbsp;event</h3>
+<h4>Creating a new&nbsp;event</h4>
 <p>In&nbsp;CoffeeScript:</p>
 <pre><code>Flakey.events.register 'map_view_updated', (event, namespace, data) -&gt;
   console.log 'The Map View has been updated!'
@@ -58,7 +60,7 @@ Flakey.events.register 'map_view_updated', our_fn, 'my_app'
 }
 Flakey.events.register('map_view_updated', our_fn, 'my_app')
 </code></pre>
-<h3>Triggering an&nbsp;event</h3>
+<h4>Triggering an&nbsp;event</h4>
 <p>Triggering an event is even simpler than registering an&nbsp;action.</p>
 <pre><code>Flakey.events.trigger('map_view_updated')
 </code></pre>
@@ -68,12 +70,12 @@ Flakey.events.register('map_view_updated', our_fn, 'my_app')
 <p>Additionally, you may optionally pass in data to be passed to the listening functions like&nbsp;so:</p>
 <pre><code>Flakey.events.trigger('map_view_updated', 'my_app', {id: 42})
 </code></pre>
-<h3>Destroying a&nbsp;namespace</h3>
+<h4>Destroying a&nbsp;namespace</h4>
 <p>If you wish, its possible to completely wipe the slate clean for a namespace, removing all listening functions.  You can do that by&nbsp;calling:</p>
 <pre><code>Flakey.events.clear('my_app')
 </code></pre>
 <p>It's doubtful you'l ever need to do this, but the ability exists if you ever&nbsp;do.</p>
-<h3>Flakey built in&nbsp;events</h3>
+<h4>Flakey built in&nbsp;events</h4>
 <p>These common events are built into the default ("flakey")&nbsp;namespace.</p>
 <ul>
 <li><code>model_foo_updated</code> - foo is replaced by the model's name in lowercase (e.g. <code>model_note_updated</code>). Called when an instance of the model is saved, passes the instance through in&nbsp;data.</li>
