@@ -7,15 +7,32 @@
 {% block content_body %}
 <h3>Navigation</h3>
 <ul>
+	<li><a href="#getting_started">Getting Started</a></li>
   <li><a href="#examples">Example Apps</a></li>
+  <li><a href="#init">Inital Setup</a></li>
+  <li><a href="#models">Using Models</a></li>
   <li><a href="#events">Event System</a></li>
 </ul>
+<hr/>
+
+<div id="getting_started">
+  {% markdown %}{% include "doc-src/getting_started.md" %}{% endmarkdown %}
+</div>
 <hr/>
 
 <div id="examples">
   {% markdown %}{% include "doc-src/examples.md" %}{% endmarkdown %}
 </div>
+<hr/>
 
+<div id="init">
+  {% markdown %}{% include "doc-src/init.md" %}{% endmarkdown %}
+</div>
+<hr/>
+
+<div id="models">
+  {% markdown %}{% include "doc-src/models.md" %}{% endmarkdown %}
+</div>
 <hr/>
 
 <div id="events">

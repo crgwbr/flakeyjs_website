@@ -5,9 +5,5 @@
 %}
 
 {% block content_body %}
-{% markdown %}
-
-{% include "doc-src/about.md" %}
-
-{% endmarkdown %}
+<div>{% markdown %}{% include "doc-src/about.md" %}{% endmarkdown %}</div>
 {% endblock %}
