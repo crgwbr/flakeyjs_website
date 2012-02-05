@@ -155,11 +155,11 @@ grocerys.content = "# Grocery List
 grocerys.save()
 </code></pre>
 <p>Now that we have a few versions, we can start to use nifty features of&nbsp;Flakey.js:</p>
-<pre><code># Rollback grocerys to before we added 'cheese' to the list 
+<pre><code># Get a view of grocerys to before we added 'cheese' to the list 
 # inital save == version 0, so we want version 1
 i = 1
 time = new Date(note.versions[i].time)
-rev = note.evolve(grocerys.versions[i].version_id)
+rev = grocerys.evolve(grocerys.versions[i].version_id)
 
 console.log time        # The timestamp of when this version was created
 
@@ -169,12 +169,13 @@ console.log rev.content # "# Grocery List
                         #  - Milk
                         #  - Eggs"
 </code></pre>
-<p>That code lets us non-destructively look at a model instance&#8217;s past, but what if we want to completely destroy the model current state and rollback to the last version? That&#8217;s even&nbsp;easier:</p>
+<p>That code lets us non-destructively look at a model instance&#8217;s past without altering the actual model. What if we want to completely destroy the model current state and rollback to the last version? That&#8217;s even&nbsp;easier:</p>
 <pre><code># Destroy the latest version
-grocerys.pop_version()
-groceries.write()
+# rollback() can accept an integer (rollback N versions) or a
+# version_id (rollback to that version)
+grocerys.rollback(1)
 </code></pre>
-<p>This snippet pops the latest version from the array and writes it to the enabled storage backends. Note that we call write() here instead of save(). That is because save() is designed to create a <em>new</em> version by running a diff on the model fields. Since we don&#8217;t want to do that here, we call the lower level write() method to directly write the version history to the&nbsp;backends.</p>
+<p>This snippet pops the latest version from the array and writes it to the enabled storage backends. Please note: Calling rollback() is <em>not</em> reversible. It is destructive to any of the versions its deleting, and therefore potentially very dangerous. Please take care when using&nbsp;it.</p>
 </div>
 <hr/>
 
