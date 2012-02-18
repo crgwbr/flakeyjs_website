@@ -16,6 +16,7 @@
         <li><a href="/">Home</a></li>
         <li><a href="https://github.com/crgwbr/flakeyjs" target="_blank">GitHub</a></li>
         <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/annotated-src/">Annotated&nbsp;Source</a></li>
         <li><a href="/about/">About</a></li>
       </ul>
       <div class="clear"></div>
@@ -35,25 +36,7 @@
 <hr/>
 
 <div id="getting_started">
-  <h2>Building Apps with&nbsp;Flakey.js</h2>
-<p>Flakey.js is written in CoffeeScript and makes heavy use of it&#8217;s Class structure and simulated classical inheritance. As such, it&#8217;s easiest to write Flakey.js apps in CoffeeScript, using the <code>Class</code> and <code>extends</code> features. </p>
-<p>Additionally, throughout the examples in these docs we use eco html templates as views and browserify to take care of bundling dependancies into a single Javascript file. Neither of these are required or part of Flakey.js, but they do work&nbsp;nicely.</p>
-<h2>Compiling&nbsp;Flakey.js</h2>
-<h5>Requirements</h5>
-<p>To compile Flakey.js from source, you&#8217;ll need to&nbsp;install:</p>
-<ul>
-<li><a href="http://nodejs.org/#download">nodejs</a></li>
-<li>npm (normally installed with&nbsp;nodejs)</li>
-<li>cake (normally installed with&nbsp;nodejs)</li>
-<li>coffeescript (<code>npm install -g coffee-script</code>)</li>
-</ul>
-<p>To compile the sample note taking app (example/*), all of the above&nbsp;plus:</p>
-<ul>
-<li>browserify (<code>npm install browserify</code>)</li>
-<li>eco (<code>npm install -g eco</code>)</li>
-</ul>
-<h5>Build&nbsp;Process</h5>
-<p>To compile Flakey.js, cd to the root of the repository and run: <code>cake build</code>. That will concat the files in <code>src/</code> into flakey.coffee. Then flakey.coffee is compiled into flakey.js, and finally minified into flakey.min.js using Google&#8217;s closure&nbsp;compiler.</p>
+  
 </div>
 <hr/>
 
@@ -67,118 +50,12 @@
 <hr/>
 
 <div id="init">
-  <h2>Initalizing Flakey.js on page&nbsp;load</h2>
-<p>Flakey.js requires you do a bit of setup on&nbsp;pageload:</p>
-<pre><code># Alias Flakey's copy of JQuery
-$ = Flakey.$
-
-# Get the controller to display first
-controllers = require('./controllers')
-
-# This function customizes a few settings, syncs 
-# our models, and displays the initial controller
-$(document).ready () -&gt;
-  settings = {
-    container: $('body')
-    base_model_endpoint: '/api'
-  }
-  Flakey.init(settings)
-
-  # Sync models
-  Flakey.models.backend_controller.sync('Note')
-
-  note_app = window.note_app = new controllers.MainStack()
-  note_app.make_active()
-</code></pre>
-<p>The above code comes from the example Note taking application (index.coffee). We&#8217;ll go over controllers later, for now the most important part to pay attention to are the settings and the call to <code>Flakey.init</code>. Here is a list of settings you can customize with <code>Flakey.init</code> (with its default value in&nbsp;parenthesis).</p>
-<ul>
-<li><strong>diff_text</strong>: (true) If true, Flakey will save strings by generating git-like text patches. If false, it will save the entire string in each version. Either way will be transparent to your application, since Flakey takes care of rendering the the patches into a string before loading it into your model. The only time this would make a difference is performance vs. model&nbsp;size.</li>
-<li><strong>container</strong>: (undefined) <em>Required</em>. This is the container to use for your app&#8217;s controllers. Generally its ok to set it to <code>$(body)</code></li>
-<li><strong>read_backend</strong>: (&#8216;memory&#8217;) This is the storage backend to use for common read operations, generally &#8216;memory&#8217; works well, and is certainly the fastest. Other available backends are &#8216;local&#8217; (localStorage), &#8216;server&#8217; (<span class="caps">JSON</span> api, if its enabled), and &#8216;socketio&#8217; (socketio server interface, if its&nbsp;enabled).</li>
-<li><strong>base_model_endpoint</strong>: (null) Setting this option to your <span class="caps">JSON</span> api&#8217;s base <span class="caps">URL</span> enables saving data to the server backend. This is better documented in the Server <span class="caps">API</span>&nbsp;docs.</li>
-<li><strong>socketio_server</strong>: (null) Set this option to your socket.io server&#8217;s <span class="caps">URL</span> to enabled realtime model saving/updating (including server push). You can include a namespace (e.g. http://localhost:8080/models) if so&nbsp;desired.</li>
-<li><strong>enabled_local_backend</strong>: (true) This option enabled the localStorage backend. Its normally safe to leave this&nbsp;enabled.</li>
-</ul>
+  
 </div>
 <hr/>
 
 <div id="models">
-  <h2>Flakey.models</h2>
-<h4>Defining&nbsp;Models</h4>
-<p>You can define models for your app by extending&nbsp;Flakey.models.Model.</p>
-<pre><code>class Note extends Flakey.models.Model
-  @model_name: 'Note', 
-  @fields: ['id', 'name', 'content']
-
-  # This is a class method
-  @foo: () -&gt;
-    return "This is a class method"
-
-  # These are instance methods
-  as_markdown: () -&gt;
-    return this.content
-
-  as_html: () -&gt;
-    # Using the Showdown Markdown -&gt; HTML converter
-    converter = new Showdown.converter()
-    return converter.makeHtml(this.content);
-</code></pre>
-<p>As you can see from the code above, defining a model is very simple. Simply create a new class that extends Flakey.models.Model, set it&#8217;s model_name parameter to match the name of the class (in this case <em>Note</em>), and set the fields parameter to an array fields for this model. This <em>must</em> include an id field in addition to you data&nbsp;fields.</p>
-<h4>Creating a new&nbsp;instance</h4>
-<p>Now that we&#8217;ve defined our model, we can start using it. We can instantiate it a new Note like&nbsp;this:</p>
-<pre><code># Using the init field shorthand
-grocerys = new Note {
-  name: "Grocery List"
-}
-
-# Not using the shorthand
-grocerys = new Note()
-grocerys.name = "Grocery List"
-
-grocerys.save()
-</code></pre>
-<p>This creates a new instance of Note and sets its name field to &#8220;Grocery List&#8221;. Finally we save it. Save a model will generate a diff of each of it&#8217;s fields, and push the difference onto the <code>grocerys.versions</code> array. Then the model is written into each of the activated storage&nbsp;backends.</p>
-<h4>About storage&nbsp;backends</h4>
-<p>Storage backends are methods of saving models for later use. By default the memory backend (an object located at window.memcache) and the localStorage backend are enabled. Via settings, you can enable the server (ajax storage) and socketio (realtime server storage with push&nbsp;updates).</p>
-<p>When an model instance is saved, it is written to each enabled storage backend. If for some reason saving to a backend fails (like a network interruption), a transaction log is generated and stored in localStorage listing in order the transactions which failed. When ever a new transaction is requested, a backend will check it&#8217;s log for any pending transactions. If some exist, it will push the new transaction onto the end of the array and attempt to perform the first transaction. If it succeeds, it continues until either another failure or the log is&nbsp;empty.</p>
-<p>At page load, it&#8217;s important to sync each of the storage backends. This is done by calling <code>Flakey.models.backend_controller.sync('Note')</code> where the string parameter is the name of your model. This should be called once for each of the models in you app, just after you call <code>Flakey.init(settings)</code>. Model sync will try to execute any pending log transactions, and then will compare and sync the objects stored in each. This makes it possible to use a volatile backend (like &#8216;memory&#8217;) for read actions, thereby reducing server&nbsp;traffic.</p>
-<h4>Version&nbsp;History</h4>
-<p>First lets add some data so that we have a history to play&nbsp;with:</p>
-<pre><code># Create a new revision on grocerys
-grocerys.content = "# Grocery List
- - Milk
- - Eggs"
-grocerys.save()
-
-# Add another item to the list
-grocerys.content = "# Grocery List
- - Milk
- - Eggs
- - Cheese"
-grocerys.save()
-</code></pre>
-<p>Now that we have a few versions, we can start to use nifty features of&nbsp;Flakey.js:</p>
-<pre><code># Get a view of grocerys to before we added 'cheese' to the list 
-# inital save == version 0, so we want version 1
-i = 1
-time = new Date(note.versions[i].time)
-rev = grocerys.evolve(grocerys.versions[i].version_id)
-
-console.log time        # The timestamp of when this version was created
-
-console.log rev.name    # "Grocery List"
-
-console.log rev.content # "# Grocery List
-                        #  - Milk
-                        #  - Eggs"
-</code></pre>
-<p>That code lets us non-destructively look at a model instance&#8217;s past without altering the actual model. What if we want to completely destroy the model current state and rollback to the last version? That&#8217;s even&nbsp;easier:</p>
-<pre><code># Destroy the latest version
-# rollback() can accept an integer (rollback N versions) or a
-# version_id (rollback to that version)
-grocerys.rollback(1)
-</code></pre>
-<p>This snippet pops the latest version from the array and writes it to the enabled storage backends. Please note: Calling rollback() is <em>not</em> reversible. It is destructive to any of the versions its deleting, and therefore potentially very dangerous. Please take care when using&nbsp;it.</p>
+  
 </div>
 <hr/>
 
@@ -311,6 +188,7 @@ Flakey.events.register 'map_view_updated', our_fn, 'my_app'
         <li><a href="/">Home</a></li>
         <li><a href="https://github.com/crgwbr/flakeyjs" target="_blank">GitHub</a></li>
         <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/annotated-src/">Annotated&nbsp;Source</a></li>
         <li><a href="/about/">About</a></li>
       </ul>
     </div>
