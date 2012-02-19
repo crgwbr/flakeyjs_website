@@ -407,12 +407,12 @@ div.button {
   padding: 10px 0;
   margin: 0 auto 0 auto; }
   #header h1 {
-    width: 25%;
+    width: 40%;
     float: left; }
     #header h1 a {
       text-decoration: none; }
   #header ul {
-    width: 70%;
+    width: 55%;
     padding: 0;
     margin: 24px 0 0 0;
     float: right; }
@@ -420,6 +420,8 @@ div.button {
       margin: 0 3%;
       list-style: none;
       display: inline; }
+      #header ul li:last-child {
+        margin: 0 0 0 3%; }
       #header ul li a {
         text-decoration: none;
         display: inline-block;
